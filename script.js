@@ -97,16 +97,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle mobile navigation (if needed)
     const handleMobileNav = () => {
         const navLinks = document.querySelector('.nav-links');
-        const hamburger = document.createElement('button');
-        hamburger.classList.add('hamburger');
-        hamburger.innerHTML = '';
-        
-        if (window.innerWidth <= 768) {
+        const hamburger = document.querySelector('.nav-toggle') || document.createElement('button');
+    
+        if (!hamburger.classList.contains('nav-toggle')) {
+            hamburger.classList.add('nav-toggle');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             document.querySelector('nav').appendChild(hamburger);
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('show');
-            });
         }
+    
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    
+        // Close menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
     };
 
     window.addEventListener('resize', handleMobileNav);

@@ -85,6 +85,17 @@ nav {
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+}
+
+/* Hamburger Icon Animation */
+.nav-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.nav-toggle.active i {
+    transform: rotate(90deg);
 }
 
 /* Hero Section */
@@ -107,8 +118,6 @@ nav {
     align-items: flex-start;
     min-height: calc(100vh - 200px);
 }
-
-
 
 .profile-image {
     width: 400px;
@@ -203,7 +212,6 @@ nav {
     gap: 1.5rem;
     margin: 2rem 0;
 }
-
 
 .social-icon {
     width: 48px;
@@ -414,23 +422,6 @@ nav {
     line-height: 1.4;
 }
 
-/* Responsive Design for Certifications */
-@media (max-width: 992px) {
-    .certifications-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .certifications-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .certification-item {
-        padding: 1.25rem;
-    }
-}
-
 /* Achievements Section */
 .achievements {
     padding: 4rem 2rem;
@@ -598,13 +589,13 @@ nav {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .profile-container {
-        grid-template-columns: 350px 1fr;
-        gap: 3rem;
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
     }
     
     .profile-image {
-        width: 280px;
-        height: 280px;
+        width: 300px;
+        height: 300px;
     }
 }
 
@@ -615,8 +606,8 @@ nav {
     }
     
     .profile-image {
-        width: 320px;
-        height: 320px;
+        width: 250px;
+        height: 250px;
         margin: 0 auto;
     }
     
@@ -661,26 +652,77 @@ nav {
         display: flex;
     }
 
-    .experience-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
+    .experience-grid,
+    .certifications-grid,
+    .skills-grid,
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
+    header {
+        padding: 1rem;
     }
-    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .role {
+        font-size: 1.25rem;
+    }
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    .nav-links.active {
+        max-height: 500px;
+        padding: 1rem;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    .nav-links a:hover {
+        background: #f0f5ff;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .resume-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .experience-grid,
+    .certifications-grid,
+    .skills-grid,
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+    .project-image h3 {
+        font-size: 1.25rem;
+    }
+
+    .certification-item {
+        padding: 1.25rem;
     }
     
     .project-filters {
@@ -704,6 +746,49 @@ nav {
         align-items: flex-start;
         gap: 0.5rem;
     }
+}
+
+@media (max-width: 576px) { /* Mobile Portrait */
+    html {
+        font-size: 14px;
+    }
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    .experience-grid,
+    .certifications-grid,
+    .projects-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-filters {
+        flex-direction: column;
+    }
+    
+    .filter-btn {
+        width: 100%;
+        padding: 1rem;
+    }
+    .resume-btn {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Mobile Touch Optimization */
+button, a {
+    touch-action: manipulation;
+}
+
+/* Smooth Transitions */
+.nav-links,
+.profile-container,
+.project-card {
+    transition: all 0.3s ease;
 }
 
 /* Footer */
