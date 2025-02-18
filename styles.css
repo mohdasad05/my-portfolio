@@ -330,6 +330,11 @@ nav {
     font-size: 0.95rem;
 }
 
+.education-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Experience Section */
 .experience {
     padding: 4rem 2rem;
@@ -373,6 +378,11 @@ nav {
 .experience-item .duration {
     color: #666;
     font-size: 0.9rem;
+}
+
+.experience-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Certifications Section */
@@ -455,6 +465,11 @@ nav {
     line-height: 1.5;
 }
 
+.achievement-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Skills Section */
 .skills {
     padding: 4rem 2rem;
@@ -496,6 +511,11 @@ nav {
     color: #666;
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
+}
+
+.skill-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Projects Section */
