@@ -84,12 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
+                entry.target.classList.add('visible');
             }
         });
-    }, observerOptions);
-
-    // Observe all sections
+    }, { threshold: 0.1 });
+    
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
