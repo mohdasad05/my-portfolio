@@ -238,7 +238,7 @@ nav {
 }
 
 .role {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--text);
     font-weight: 400;
     margin-bottom: 2rem;
@@ -519,8 +519,42 @@ nav {
 
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+.certification-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.certification-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.certification-card:hover::before {
+    transform: scaleX(1);
+}
+
+.certification-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    flex-shrink: 0;
 }
 
 .certification-item {
@@ -561,31 +595,70 @@ nav {
     text-align: left;
     font-size: 2rem;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--text-color);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 .achievement-item {
-    background-color: white;
-    padding: 2rem;
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: visible;
     transition: all 0.3s ease;
-    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.achievement-badge {
+    position: absolute;
+    top: 15px;
+    right: -25px;
+    background: var(--gradient);
+    color: white;
+    padding: 0.5rem 2rem;
+    transform: rotate(45deg);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    z-index: 1;
+}
+
+.achievement-item:hover .achievement-badge {
+    animation: badgeFloat 1s ease-in-out infinite;
+}
+
+.achievement-content {
+    position: relative;
+    z-index: 2;
 }
 
 .achievement-item h3 {
-    color: #1a1a1a;
+    color: var(--text-color);
     margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 .achievement-item p {
-    color: #666;
-    line-height: 1.5;
+    color: var(--text-color);
+    opacity: 0.9;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .achievement-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow);
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(-5px); }
 }
 
 /* Skills Section */
@@ -603,22 +676,63 @@ nav {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
 .skill-category {
-    background: white;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 15px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient);
+    opacity: 0.1;
+    transform: rotate(45deg);
+    transition: opacity 0.3s ease;
+}
+
+.skill-category:hover::before {
+    opacity: 0.2;
 }
 
 .skill-category h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.skill-category h3 i {
+    font-size: 1.6rem;
+    color: var(--primary);
+}
+
+.skill-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
 }
 
 .skill-category ul {
@@ -634,6 +748,11 @@ nav {
 .skill-category:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow);
+}
+
+.skill-item i {
+    color: var(--primary);
+    font-size: 1.2rem;
 }
 
 /* Projects Section */
@@ -1013,4 +1132,20 @@ footer::before {
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.wave-emoji {
+    animation: wave 2s infinite;
+    display: inline-block;
 }
