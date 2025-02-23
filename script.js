@@ -81,16 +81,36 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                const element = entry.target;
+                const animationType = element.dataset.animation || 'fadeInUp';
+                const staggerItems = element.querySelectorAll('[data-stagger] > *');
+                
+                element.classList.add(`animate-${animationType}`);
+                
+                if (staggerItems.length > 0) {
+                    staggerItems.forEach((item, index) => {
+                        item.style.setProperty('--index', index);
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                        item.style.transitionDelay = `calc(${index} * 0.15s)`;
+                    });
+                }
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
     
+    // Apply to elements
+    document.querySelectorAll('[data-animation]').forEach(el => {
+        animationObserver.observe(el);
+    });
+    
+    // Apply to section headings
     document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
+        animationObserver.observe(section);
+        section.setAttribute('data-animation', 'fadeInUp');
     });
 
     // Handle mobile navigation (if needed)
@@ -128,4 +148,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', handleMobileNav);
     handleMobileNav();
+});
+
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Get theme from localStorage or system preference
+const savedTheme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+body.setAttribute('data-theme', savedTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
 });

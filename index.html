@@ -23,6 +23,12 @@
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#location">Contact</a></li>
+                <li class="theme-toggle-container">
+                    <button id="theme-toggle" class="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
                 <li>
                     <a href="resume.pdf" class="resume-btn" download>
                         <i class="fas fa-download"></i> Resume
@@ -39,7 +45,7 @@
                     <img src="images/profile.jpg" alt="Mohammad Asad" loading="lazy">
                 </div>
                 <div class="hero-content">
-                    <h1>Hi, I'm Mohammad<br>Asad</h1>
+                    <h1>Hi, I'm Mohammad<br>Asad <span class="wave-emoji">👋</span></h1>
                     <h2 class="role">Python/Django Developer | AI/ML & Data Science Enthusiast</h2>
             
                     <div class="bio">
@@ -80,7 +86,7 @@
             </div>
         </section>
 
-        <section id="education" class="education">
+        <section id="education" class="education" data-animation="fadeInLeft">
             <h2>Education</h2>
             <div class="education-item">
                 <h3>Khwaja Moinuddin Chishti Language University</h3>
@@ -109,7 +115,7 @@
             </div>
         </section>
 
-        <section id="experience" class="experience">
+        <section id="experience" class="experience" data-animation="fadeInRight" data-stagger>
             <h2>Experience</h2>
             <div class="experience-grid">
                 <div class="experience-item">
@@ -145,61 +151,7 @@
             </div>
         </section>
 
-        <section id="certifications" class="certifications">
-            <h2>Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Tableau – Internshala Trainings</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Artificial Intelligence Intern – Tech-A-Intern</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Data Science – Internshala Trainings</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Machine Learning Intern – BharatIntern</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Machine Learning – Internshala Trainings</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Python Programming Intern - CodSoft</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>2 Days Pre Bootcamp Workshop - GUVI Geek Networks, IITM Research Park</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Getting Started with Enterprise Data Science – IBM</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Web Development Intern – CodeClause</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Web Development - Internshala Trainings</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>ChatGPT guided path - Coding Ninjas</span>
-                </div>
-                <div class="certification-item">
-                    <i class="fas fa-certificate"></i>
-                    <span>Data Analytics Consulting Virtual Internship - Forage</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="skills">
+        <section id="skills" class="skills" data-animation="fadeInUp">
             <h2>Skills & Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-category">
@@ -214,6 +166,7 @@
                     <h3>Web Development</h3>
                     <ul>
                         <li>Django</li>
+                        <li>Django Rest Framework (DRF)</li>
                         <li>HTML</li>
                         <li>CSS</li>
                         <li>MySQL</li>
@@ -225,20 +178,23 @@
                     <ul>
                         <li>Machine Learning</li>
                         <li>Data Science</li>
-                        <li>Jupyter</li>
+                        <li>Jupyter Notebook</li>
+                        <li>Streamlit</li>
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>Tools & Technologies</h3>
                     <ul>
-                        <li>Tableau</li>
                         <li>Database Management System (DBMS)</li>
+                        <li>Tableau</li>
+                        <li>Git</li>
+                        <li>Postman</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="projects">
+        <section id="projects" class="projects" data-animation="scaleUp" data-stagger>
             <h2>Featured Projects</h2>
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -386,6 +342,60 @@
                         <h4>Expense Tracker</h4>
                         <p>A web application that helps users manage their expenses by tracking income and expenditures. It includes a dynamic dashboard with visual representations of spending patterns.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="certifications">
+            <h2>Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Tableau – Internshala Trainings</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Artificial Intelligence Intern – Tech-A-Intern</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Data Science – Internshala Trainings</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Machine Learning Intern – BharatIntern</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Machine Learning – Internshala Trainings</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Python Programming Intern - CodSoft</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>2 Days Pre Bootcamp Workshop - GUVI Geek Networks, IITM Research Park</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Getting Started with Enterprise Data Science – IBM</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Web Development Intern – CodeClause</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Web Development - Internshala Trainings</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>ChatGPT guided path - Coding Ninjas</span>
+                </div>
+                <div class="certification-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Data Analytics Consulting Virtual Internship - Forage</span>
                 </div>
             </div>
         </section>

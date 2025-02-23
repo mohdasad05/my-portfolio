@@ -99,10 +99,16 @@ nav {
     background: var(--gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    -webkit-text-fill-color: #00d6d0;
+    color: #00d6d0;
     text-decoration: none;
     transition: transform 0.3s ease;
+}
+
+.logo::before {
+    content: '\1F4BB'; /* Laptop emoji as portfolio symbol */
+    font-size: 1.6rem;
+    margin-right: 0.3rem;
 }
 
 .logo:hover {
@@ -233,8 +239,8 @@ nav {
     background: var(--gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    -webkit-text-fill-color: #00d6d0;
+    color: #00d6d0;
 }
 
 .role {
@@ -740,9 +746,30 @@ nav {
 }
 
 .skill-category li {
-    color: #666;
+    position: relative;
+    color: var(--text-color);
+    padding-left: 2rem;
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.skill-category li::before {
+    content: '\f121'; /* Font Awesome Unicode for code icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-size: 0.95rem;
+    transition: transform 0.3s ease;
+}
+
+.skill-category li:hover::before {
+    transform: translateY(-50%) rotate(15deg);
+    color: var(--secondary);
 }
 
 .skill-category:hover {
@@ -1129,23 +1156,139 @@ footer::before {
 }
 
 /* Animations */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes wave {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(14deg); }
-    40% { transform: rotate(-4deg); }
-    50% { transform: rotate(10deg); }
-    60% { transform: rotate(0deg); }
-    100% { transform: rotate(0deg); }
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation Classes */
+[data-animation] {
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s forwards;
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.6s forwards;
+}
+
+.animate-fadeInRight {
+    animation: fadeInRight 0.6s forwards;
+}
+
+.animate-scaleUp {
+    animation: scaleUp 0.6s forwards;
+}
+
+/* Staggered Animations */
+[data-stagger] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+/* Delay for grid items */
+.experience-grid > *,
+.certifications-grid > *,
+.projects-grid > *,
+.skills-grid > * {
+    transition-delay: calc(var(--index) * 0.1s);
 }
 
 .wave-emoji {
-    animation: wave 2s infinite;
     display: inline-block;
+    animation: wave 2s infinite;
+    transform-origin: 70% 70%;
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+    font-size: 1.2em;
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg) }
+    10% { transform: rotate(-10deg) }
+    20% { transform: rotate(12deg) }
+    30% { transform: rotate(-10deg) }
+    40% { transform: rotate(9deg) }
+    50% { transform: rotate(0deg) }
+    100% { transform: rotate(0deg) }
+}
+
+.theme-toggle {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 30px;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle .fa-sun {
+    opacity: 1;
+    color: var(--text-color);
+}
+
+.theme-toggle .fa-moon {
+    opacity: 0;
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .theme-toggle .fa-sun {
+    opacity: 0;
+}
+
+[data-theme="dark"] .theme-toggle .fa-moon {
+    opacity: 1;
 }
