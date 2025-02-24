@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
             projectCards.forEach(card => {
                 if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
                     card.style.display = 'block';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                    card.style.visibility = 'visible';
                 } else {
                     card.style.display = 'none';
                 }

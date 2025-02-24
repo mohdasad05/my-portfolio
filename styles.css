@@ -1042,10 +1042,29 @@ nav {
     .certifications-grid,
     .skills-grid,
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        display: grid !important; /* Force grid display */
+        overflow: visible !important;
     }
+
+    .project-card {
+        display: block !important;
+        opacity: 1 !important;
+        transform: none !important;
+        min-height: 300px; /* Ensure consistent card height */
+    }
+
+    .project-image {
+        height: 180px; /* Reduced height for better mobile view */
+    }
+
     .project-image h3 {
         font-size: 1.25rem;
+    }
+
+    [data-animation] {
+        opacity: 1 !important;
+        transform: none !important;
     }
 
     .certification-item {
@@ -1053,7 +1072,15 @@ nav {
     }
     
     .project-filters {
+        flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filter-btn {
+        width: auto;
+        padding: 0.5rem 1rem;
+        margin: 0.25rem;
     }
     
     .education-item {
@@ -1091,6 +1118,20 @@ nav {
     .projects-grid,
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        display: block !important;
+    }
+    
+    /* Fix potential overflow issue */
+    .projects {
+        overflow: visible;
+    }
+    
+    /* Adjust project image height */
+    .project-image {
+        height: 200px;
     }
     
     .project-filters {
@@ -1130,6 +1171,14 @@ button, a {
 
     .view-work {
         padding: 1rem 2rem;
+    }
+
+    .project-info {
+        padding: 1rem;
+    }
+    
+    .project-info h4 {
+        font-size: 1.1rem;
     }
 }
 
