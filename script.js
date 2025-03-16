@@ -152,19 +152,3 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', handleMobileNav);
     handleMobileNav();
 });
-
-// Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-// Get theme from localStorage or system preference
-const savedTheme = localStorage.getItem('theme') || 
-                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-body.setAttribute('data-theme', savedTheme);
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-});
