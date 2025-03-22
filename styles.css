@@ -106,7 +106,7 @@ nav {
 }
 
 .logo::before {
-    content: '\1F4BB'; /* Laptop emoji as portfolio symbol */
+    content: '\1F310'; /* Emoji as portfolio symbol */
     font-size: 1.6rem;
     margin-right: 0.3rem;
 }
