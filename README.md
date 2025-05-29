@@ -1,6 +1,6 @@
 # Mohammad Asad - Developer Portfolio 🚀
 
-Welcome to my personal portfolio website! This site showcases my skills, projects, experience, and contact information. It is designed using **HTML, CSS, JavaScript**, and is fully responsive.
+Welcome to my personal portfolio website! This site showcases my skills, projects, experience, certifications, achievements and contact information. It is designed using **HTML, CSS, JavaScript**, and is fully responsive.
 
 ---
 
