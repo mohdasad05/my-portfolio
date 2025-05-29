@@ -40,7 +40,7 @@ You can view the live version of this portfolio [here](https://mohdasad05.github
 - **Frontend**: HTML, CSS, JavaScript
 - **Icons**: Font Awesome
 - **Fonts**: Google Fonts (SF Pro Display)
-- **Deployment**: GitHub Pages / Replit / Any static host
+- **Deployment**: GitHub Pages
 
 ---
 
