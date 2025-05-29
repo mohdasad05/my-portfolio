@@ -1,20 +1,21 @@
-# 🌐 My Portfolio - Mohd Asad
+# 🌐 My Portfolio - Mohammad Asad
 
-Welcome to my personal portfolio website! This site showcases my skills, projects, education, and experiences as a passionate Python developer and software enthusiast.
+Welcome to my personal portfolio website! This project showcases my skills, projects, education, and experiences as a Python developer and tech enthusiast.
 
 🔗 **Live Website:** [mohdasad05.github.io/my-portfolio](https://mohdasad05.github.io/my-portfolio/)  
-💻 **GitHub Repo:** [github.com/mohdasad05/my-portfolio](https://github.com/mohdasad05/my-portfolio/)
+💻 **GitHub Repository:** [github.com/mohdasad05/my-portfolio](https://github.com/mohdasad05/my-portfolio/)  
+👔 **LinkedIn:** [linkedin.com/in/mohammad-asad-631647277](https://www.linkedin.com/in/mohammad-asad-631647277)
 
 ---
 
 ## 📌 Features
 
-- ✨ Modern and responsive design
-- 🧑‍💻 About Me section with career objectives
-- 💼 Projects section highlighting my work with links to GitHub
-- 🛠️ Skills section showcasing technical proficiencies
-- 🎓 Education and certifications
-- 📞 Contact form to reach out to me
+- Responsive and modern UI design
+- "About Me" section with a career objective
+- Projects section with GitHub links
+- Technical skills overview
+- Education and certifications
+- Contact section with form integration
 
 ---
 
@@ -23,14 +24,14 @@ Welcome to my personal portfolio website! This site showcases my skills, project
 - **HTML5**
 - **CSS3**
 - **JavaScript**
-- **Font Awesome** (for icons)
 - **Google Fonts**
+- **Font Awesome** (for icons)
 
 ---
 
 ## 🚀 Getting Started
 
-To run this project locally:
+To run this portfolio locally:
 
 1. Clone the repository:
    ```bash
