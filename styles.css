@@ -667,7 +667,7 @@ nav {
     gap: 1.5rem;
     transition: all 0.3s ease;
     position: relative;
-    cursor: pointer;
+    /* cursor: pointer; */ /* Removed as it's now a link */
 }
 
 .certification-item:hover {
@@ -688,6 +688,29 @@ nav {
     color: #1a1a1a;
     font-size: 0.95rem;
     line-height: 1.4;
+}
+
+.certification-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.certification-link i {
+    color: #00f2ea;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.certification-link:hover {
+    color: #00f2ea; /* Change text color on hover */
+}
+
+.certification-link:hover i {
+    color: #00f2ea; /* Ensure icon color also changes on hover */
 }
 
 /* Achievements Section */
