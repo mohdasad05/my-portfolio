@@ -666,11 +666,16 @@ nav {
     align-items: center;
     gap: 1.5rem;
     transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
 }
 
 .certification-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow);
+    background: linear-gradient(to right, rgba(0, 242, 234, 0.05), rgba(0, 214, 208, 0.1));
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease;
 }
 
 .certification-item i {
@@ -690,33 +695,28 @@ nav {
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.achievements h2 {
+  }
+  
+  .achievements h2 {
     text-align: left;
     font-size: 2rem;
     font-weight: 600;
     color: var(--text-color);
-}
-
-.achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.achievement-item {
+    margin-bottom: 2rem;
+  }
+  
+  .achievement-item {
     background: var(--card-bg);
-    padding: 2.5rem 2rem;
+    padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: visible;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
-}
-
-.achievement-badge {
+  }
+  
+  .achievement-badge {
     position: absolute;
     top: 15px;
     right: -25px;
@@ -728,34 +728,65 @@ nav {
     font-weight: 600;
     box-shadow: var(--shadow);
     z-index: 1;
-}
-
-.achievement-item:hover .achievement-badge {
+  }
+  
+  .achievement-item:hover .achievement-badge {
     animation: badgeFloat 1s ease-in-out infinite;
-}
-
-.achievement-content {
+  }
+  
+  .achievement-content {
     position: relative;
     z-index: 2;
-}
-
-.achievement-item h3 {
+  }
+  
+  .achievement-item h3 {
     color: var(--text-color);
     margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.achievement-item p {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .achievement-item p {
     color: var(--text-color);
     opacity: 0.9;
     line-height: 1.6;
     font-size: 0.95rem;
-}
-
-.achievement-item:hover {
+    margin-bottom: 1rem;
+  }
+  
+  .achievement-item ul {
+    margin: 0 0 1rem 1rem;
+    padding: 0;
+    list-style-type: disc;
+    color: var(--text-color);
+    opacity: 0.9;
+    font-size: 0.95rem;
+  }
+  
+  .achievement-item li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .lor-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    transition: all var(--transition-fast);
+  }
+  
+  .lor-link:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  
+  .achievement-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow);
-}
+  }  
 
 @keyframes badgeFloat {
     0%, 100% { transform: rotate(45deg) translateY(0); }
