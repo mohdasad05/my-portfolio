@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add scroll animation for elements
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: '50px'
     };
 
     const animationObserver = new IntersectionObserver((entries) => {
@@ -103,7 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const animationType = element.dataset.animation || 'fadeInUp';
                 const staggerItems = element.querySelectorAll('[data-stagger] > *');
                 
-                // Add animation class with a slight delay for smoother reveal
+                // Mobile optimization
+                if (window.innerWidth <= 768) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'none';
+                    if (staggerItems.length > 0) {
+                        staggerItems.forEach(item => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'none';
+                        });
+                    }
+                    return;
+                }
+                
+                // Desktop animations
                 setTimeout(() => {
                     element.classList.add(`animate-${animationType}`);
                     element.style.opacity = '1';
@@ -134,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-    }, { threshold: 0.15, rootMargin: '50px' });
+    }, observerOptions);
     
     // Apply to elements
     document.querySelectorAll('[data-animation]').forEach(el => {
@@ -147,23 +161,22 @@ document.addEventListener('DOMContentLoaded', () => {
         section.setAttribute('data-animation', 'fadeInUp');
     });
 
-    // In script.js, update all window.innerWidth checks to 576
+    // Handle mobile navigation
     const handleMobileNav = () => {
         const navLinks = document.querySelector('.nav-links');
-        let hamburger = document.querySelector('.nav-toggle');
+        const hamburger = document.querySelector('.nav-toggle') || document.createElement('button');
         let isAnimating = false;
-
-        if (!hamburger) {
-            hamburger = document.createElement('button');
+    
+        if (!hamburger.classList.contains('nav-toggle')) {
             hamburger.classList.add('nav-toggle');
             hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             document.querySelector('nav').appendChild(hamburger);
         }
-
+    
         const toggleMenu = (show) => {
             if (isAnimating) return;
             isAnimating = true;
-
+    
             const icon = hamburger.querySelector('i');
             if (show) {
                 navLinks.classList.add('active');
@@ -176,35 +189,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.className = 'fas fa-bars';
                 document.body.style.overflow = '';
             }
-
+    
             setTimeout(() => {
                 isAnimating = false;
             }, 300);
         };
-
+    
         hamburger.addEventListener('click', () => {
             const isActive = navLinks.classList.contains('active');
             toggleMenu(!isActive);
         });
-
+    
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav') && window.innerWidth <= 576) {
+            if (!e.target.closest('nav') && window.innerWidth <= 768) {
                 toggleMenu(false);
             }
         });
-
+    
         // Close menu on resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 576) {
+            if (window.innerWidth > 768) {
                 toggleMenu(false);
             }
         });
-
+    
         // Close menu when clicking nav links
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 576) {
+                if (window.innerWidth <= 768) {
                     toggleMenu(false);
                 }
             });
@@ -213,5 +226,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', handleMobileNav);
     handleMobileNav();
-    // ... existing code ...
+
+    // Force visibility on mobile
+    const forceMobileVisibility = () => {
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.display = 'block';
+                card.style.opacity = '1';
+                card.style.transform = 'none';
+                card.style.visibility = 'visible';
+            });
+        }
+    };
+
+    // Call on load and resize
+    forceMobileVisibility();
+    window.addEventListener('resize', forceMobileVisibility);
 });

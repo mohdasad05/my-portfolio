@@ -954,6 +954,7 @@ nav {
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    opacity: 1 !important; /* Force visibility */
 }
 
 .projects h2 {
@@ -1255,9 +1256,7 @@ nav {
     list-style: none;
     gap: 2rem;
     align-items: center;
-}
 
-@media (max-width: 768px) {
     .nav-links {
         display: none;
         position: fixed;
@@ -1340,7 +1339,8 @@ nav {
     .skills-grid,
     .projects-grid {
         grid-template-columns: 1fr !important;
-        display: grid !important; /* Force grid display */
+        display: grid !important;
+        gap: 2rem !important;
         overflow: visible !important;
     }
 
@@ -1348,11 +1348,13 @@ nav {
         display: block !important;
         opacity: 1 !important;
         transform: none !important;
-        min-height: 300px; /* Ensure consistent card height */
+        visibility: visible !important;
+        min-height: auto !important;
+        margin-bottom: 2rem !important;
     }
 
     .project-image {
-        height: 180px; /* Reduced height for better mobile view */
+        height: 200px !important;
     }
 
     .project-image h3 {
@@ -1362,6 +1364,7 @@ nav {
     [data-animation] {
         opacity: 1 !important;
         transform: none !important;
+        transition: none !important;
     }
 
     .certification-item {
@@ -1397,6 +1400,11 @@ nav {
         align-items: flex-start;
         gap: 0.5rem;
     }
+
+    .projects {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1405,43 +1413,46 @@ nav {
         position: absolute;
         right: 1.5rem;
         top: 1.2rem;
-        z-index: 1101;
+        z-index: 1100;
     }
     .nav-links {
         display: none !important;
         position: fixed;
-        top: 60px;
+        top: 0;
         left: 0;
         right: 0;
+        bottom: 0;
         width: 100vw;
+        height: 100vh;
         background: #fff;
         flex-direction: column;
         align-items: center;
-        gap: 0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 0;
+        gap: 0.5rem;
+        box-shadow: none;
+        padding-top: 56px;
         margin: 0;
         z-index: 1100;
-        max-height: 0;
-        overflow: hidden;
+        overflow-y: auto !important;
+        max-height: 100vh !important;
+        -webkit-overflow-scrolling: touch;
         opacity: 0;
-        transition: all 0.3s;
+        pointer-events: none;
+        transition: opacity 0.3s;
     }
     .nav-links.active {
         display: flex !important;
-        max-height: 500px;
         opacity: 1;
-        padding: 1rem 0;
+        pointer-events: auto;
     }
     .nav-links li {
         width: 100%;
         text-align: center;
-        padding: 0.5rem 0;
+        padding: 0.25rem 0;
     }
     .nav-links a {
         display: block;
         width: 100%;
-        padding: 1rem 0;
+        padding: 0.75rem 0;
         font-size: 1.1rem;
         border-radius: 0;
     }
@@ -1450,6 +1461,9 @@ nav {
     }
     nav {
         position: relative;
+    }
+    body.menu-open {
+        overflow: hidden;
     }
 }
 
@@ -1464,38 +1478,41 @@ nav {
     .nav-links {
         display: none !important;
         position: fixed;
-        top: 60px;
+        top: 56px;
         left: 0;
         right: 0;
         background: #fff;
         flex-direction: column;
         align-items: center;
-        gap: 0;
+        gap: 0.5rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 0;
+        padding-top: 0;
         margin: 0;
         z-index: 1099;
         width: 100vw;
-        max-height: 0;
-        overflow: hidden;
+        max-height: 100vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
         opacity: 0;
+        pointer-events: none;
         transition: all 0.3s;
     }
     .nav-links.active {
         display: flex !important;
         max-height: 500px;
         opacity: 1;
-        padding: 1rem 0;
+        padding: 0;
+        pointer-events: auto;
     }
     .nav-links li {
         width: 100%;
         text-align: center;
-        padding: 0.5rem 0;
+        padding: 0.25rem 0;
     }
     .nav-links a {
         display: block;
         width: 100%;
-        padding: 1rem 0;
+        padding: 0.75rem 0;
         font-size: 1.1rem;
         border-radius: 0;
     }
@@ -1504,6 +1521,41 @@ nav {
     }
     nav {
         position: relative;
+    }
+}
+
+/* Mobile Touch Optimization */
+button, a {
+    touch-action: manipulation;
+}
+
+/* Smooth Transitions */
+.nav-links,
+.profile-container,
+.project-card {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .profile-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .view-work {
+        padding: 1rem 2rem;
+    }
+
+    .project-info {
+        padding: 1rem;
+    }
+    
+    .project-info h4 {
+        font-size: 1.1rem;
     }
 }
 
@@ -1628,3 +1680,4 @@ footer::before {
     50% { transform: rotate(0deg) }
     100% { transform: rotate(0deg) }
 }
+
