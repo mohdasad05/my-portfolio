@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectLinks = document.querySelectorAll('.project-link');
 
     filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default button behavior
+            
             // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked button
@@ -24,10 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
                     card.style.display = 'block';
                     card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
+                    card.style.transform = 'none';
                     card.style.visibility = 'visible';
+                    card.style.height = 'auto';
+                    card.style.marginBottom = '2rem';
                 } else {
                     card.style.display = 'none';
+                    card.style.opacity = '0';
+                    card.style.visibility = 'hidden';
+                    card.style.height = '0';
+                    card.style.marginBottom = '0';
                 }
             });
         });
@@ -235,6 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.opacity = '1';
                 card.style.transform = 'none';
                 card.style.visibility = 'visible';
+                card.style.height = 'auto';
+                card.style.marginBottom = '2rem';
+            });
+
+            // Ensure filter buttons are clickable
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.style.pointerEvents = 'auto';
+                btn.style.cursor = 'pointer';
+                btn.style.opacity = '1';
             });
         }
     };
@@ -242,4 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call on load and resize
     forceMobileVisibility();
     window.addEventListener('resize', forceMobileVisibility);
+    // Also call when orientation changes
+    window.addEventListener('orientationchange', forceMobileVisibility);
 });
