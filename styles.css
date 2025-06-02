@@ -1411,7 +1411,7 @@ nav {
     .filter-btn:active {
         transform: scale(0.95);
     }
-
+    
     .education-item {
         padding: 1.5rem;
     }
@@ -1437,8 +1437,12 @@ nav {
 }
 
 @media (max-width: 576px) {
-    .hero {
-        padding-top: 90px !important;
+    .profile-container {
+        margin-top: 2.5rem !important;
+    }
+    .hero-content {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     .nav-toggle {
         display: block !important;
@@ -1500,8 +1504,12 @@ nav {
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding-top: 90px !important;
+    .profile-container {
+        margin-top: 2rem !important;
+    }
+    .hero-content {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     .nav-toggle {
         display: block !important;
