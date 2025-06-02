@@ -1382,20 +1382,24 @@ nav {
     }
     
     .project-filters {
-        padding: 0.5rem;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
         gap: 0.5rem;
+        padding: 0.5rem 0;
+        overflow-x: auto;
+        width: 100%;
     }
 
     .filter-btn {
-        padding: 0.75rem 1.25rem;
-        font-size: 1rem;
-        min-width: 80px;
-        text-align: center;
-        background-color: rgba(0, 242, 234, 0.05);
-        border: 1px solid rgba(0, 242, 234, 0.1);
-        pointer-events: auto !important;
-        cursor: pointer !important;
-        opacity: 1 !important;
+        flex: 1 1 auto;
+        min-width: 70px;
+        max-width: 120px;
+        padding: 0.5rem 0.5rem;
+        font-size: 0.95rem;
+        margin: 0;
+        white-space: nowrap;
     }
     
     .filter-btn.active {
@@ -1704,5 +1708,27 @@ footer::before {
     40% { transform: rotate(9deg) }
     50% { transform: rotate(0deg) }
     100% { transform: rotate(0deg) }
+}
+
+@media (max-width: 480px) {
+    .project-filters {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.5rem 0;
+        overflow-x: auto;
+        width: 100%;
+    }
+    .filter-btn {
+        flex: 1 1 auto;
+        min-width: 60px;
+        max-width: 100px;
+        padding: 0.4rem 0.3rem;
+        font-size: 0.9rem;
+        margin: 0;
+        white-space: nowrap;
+    }
 }
 
