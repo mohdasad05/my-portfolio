@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Project Filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+    const projectLinks = document.querySelectorAll('.project-link');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -29,6 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.display = 'none';
                 }
             });
+        });
+    });
+
+    // Add click event listeners to project links
+    projectLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const url = link.getAttribute('href');
+            if (url) {
+                e.preventDefault();
+                window.open(url, '_blank');
+            }
         });
     });
 
@@ -91,19 +103,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 const animationType = element.dataset.animation || 'fadeInUp';
                 const staggerItems = element.querySelectorAll('[data-stagger] > *');
                 
-                element.classList.add(`animate-${animationType}`);
+                // Add animation class with a slight delay for smoother reveal
+                setTimeout(() => {
+                    element.classList.add(`animate-${animationType}`);
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100);
                 
                 if (staggerItems.length > 0) {
                     staggerItems.forEach((item, index) => {
-                        item.style.setProperty('--index', index);
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                        item.style.transitionDelay = `calc(${index} * 0.15s)`;
+                        setTimeout(() => {
+                            item.style.setProperty('--index', index);
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0) scale(1)';
+                            item.style.transitionDelay = `calc(${index} * 0.15s)`;
+                        }, 200 + (index * 100));
                     });
                 }
+
+                // Add hover effect for interactive elements
+                const interactiveElements = element.querySelectorAll('.project-card, .skill-category, .education-item');
+                interactiveElements.forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        item.style.transform = 'translateY(-5px)';
+                        item.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                    item.addEventListener('mouseleave', () => {
+                        item.style.transform = 'translateY(0)';
+                    });
+                });
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.15, rootMargin: '50px' });
     
     // Apply to elements
     document.querySelectorAll('[data-animation]').forEach(el => {
@@ -116,10 +147,11 @@ document.addEventListener('DOMContentLoaded', () => {
         section.setAttribute('data-animation', 'fadeInUp');
     });
 
-    // Handle mobile navigation (if needed)
+    // Handle mobile navigation
     const handleMobileNav = () => {
         const navLinks = document.querySelector('.nav-links');
         const hamburger = document.querySelector('.nav-toggle') || document.createElement('button');
+        let isAnimating = false;
     
         if (!hamburger.classList.contains('nav-toggle')) {
             hamburger.classList.add('nav-toggle');
@@ -127,25 +159,54 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('nav').appendChild(hamburger);
         }
     
+        const toggleMenu = (show) => {
+            if (isAnimating) return;
+            isAnimating = true;
+    
+            const icon = hamburger.querySelector('i');
+            if (show) {
+                navLinks.classList.add('active');
+                hamburger.classList.add('active');
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = '';
+            }
+    
+            setTimeout(() => {
+                isAnimating = false;
+            }, 300);
+        };
+    
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            const isActive = navLinks.classList.contains('active');
+            toggleMenu(!isActive);
         });
     
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!e.target.closest('nav') && window.innerWidth <= 768) {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+                toggleMenu(false);
             }
         });
     
         // Close menu on resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+                toggleMenu(false);
             }
+        });
+    
+        // Close menu when clicking nav links
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleMenu(false);
+                }
+            });
         });
     };
 
