@@ -1437,6 +1437,9 @@ nav {
 }
 
 @media (max-width: 576px) {
+    .hero {
+        padding-top: 90px !important;
+    }
     .nav-toggle {
         display: block !important;
         position: absolute;
@@ -1497,6 +1500,9 @@ nav {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding-top: 90px !important;
+    }
     .nav-toggle {
         display: block !important;
         position: absolute;
