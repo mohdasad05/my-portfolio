@@ -1399,83 +1399,111 @@ nav {
     }
 }
 
-@media (max-width: 576px) { /* Mobile Portrait */
-    html {
-        font-size: 14px;
-    }
-    .hero h1 {
-        font-size: 1.75rem;
+@media (max-width: 576px) {
+    .nav-toggle {
+        display: block !important;
+        position: absolute;
+        right: 1.5rem;
+        top: 1.2rem;
+        z-index: 1101;
     }
     .nav-links {
-        gap: 1rem;
-        font-size: 0.9rem;
-    }
-    .experience-grid,
-    .certifications-grid,
-    .projects-grid,
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .project-card {
-        display: block !important;
-    }
-    
-    /* Fix potential overflow issue */
-    .projects {
-        overflow: visible;
-    }
-    
-    /* Adjust project image height */
-    .project-image {
-        height: 200px;
-    }
-    
-    .project-filters {
+        display: none !important;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background: #fff;
         flex-direction: column;
+        align-items: center;
+        gap: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        padding: 0;
+        margin: 0;
+        z-index: 1100;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s;
     }
-    
-    .filter-btn {
+    .nav-links.active {
+        display: flex !important;
+        max-height: 500px;
+        opacity: 1;
+        padding: 1rem 0;
+    }
+    .nav-links li {
         width: 100%;
-        padding: 1rem;
+        text-align: center;
+        padding: 0.5rem 0;
     }
-    .resume-btn {
-        padding: 0.4rem 0.8rem;
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        border-radius: 0;
     }
-}
-
-/* Mobile Touch Optimization */
-button, a {
-    touch-action: manipulation;
-}
-
-/* Smooth Transitions */
-.nav-links,
-.profile-container,
-.project-card {
-    transition: all 0.3s ease;
+    .nav-links a:hover {
+        background: #f0f5ff;
+    }
+    nav {
+        position: relative;
+    }
 }
 
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2.2rem;
+    .nav-toggle {
+        display: block !important;
+        position: absolute;
+        right: 1.5rem;
+        top: 1.2rem;
+        z-index: 1100;
     }
-
-    .profile-image {
-        width: 250px;
-        height: 250px;
+    .nav-links {
+        display: none !important;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        padding: 0;
+        margin: 0;
+        z-index: 1099;
+        width: 100vw;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s;
     }
-
-    .view-work {
-        padding: 1rem 2rem;
+    .nav-links.active {
+        display: flex !important;
+        max-height: 500px;
+        opacity: 1;
+        padding: 1rem 0;
     }
-
-    .project-info {
-        padding: 1rem;
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
     }
-    
-    .project-info h4 {
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
         font-size: 1.1rem;
+        border-radius: 0;
+    }
+    .nav-links a:hover {
+        background: #f0f5ff;
+    }
+    nav {
+        position: relative;
     }
 }
 

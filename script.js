@@ -147,22 +147,23 @@ document.addEventListener('DOMContentLoaded', () => {
         section.setAttribute('data-animation', 'fadeInUp');
     });
 
-    // Handle mobile navigation
+    // In script.js, update all window.innerWidth checks to 576
     const handleMobileNav = () => {
         const navLinks = document.querySelector('.nav-links');
-        const hamburger = document.querySelector('.nav-toggle') || document.createElement('button');
+        let hamburger = document.querySelector('.nav-toggle');
         let isAnimating = false;
-    
-        if (!hamburger.classList.contains('nav-toggle')) {
+
+        if (!hamburger) {
+            hamburger = document.createElement('button');
             hamburger.classList.add('nav-toggle');
             hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             document.querySelector('nav').appendChild(hamburger);
         }
-    
+
         const toggleMenu = (show) => {
             if (isAnimating) return;
             isAnimating = true;
-    
+
             const icon = hamburger.querySelector('i');
             if (show) {
                 navLinks.classList.add('active');
@@ -175,35 +176,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.className = 'fas fa-bars';
                 document.body.style.overflow = '';
             }
-    
+
             setTimeout(() => {
                 isAnimating = false;
             }, 300);
         };
-    
+
         hamburger.addEventListener('click', () => {
             const isActive = navLinks.classList.contains('active');
             toggleMenu(!isActive);
         });
-    
+
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav') && window.innerWidth <= 768) {
+            if (!e.target.closest('nav') && window.innerWidth <= 576) {
                 toggleMenu(false);
             }
         });
-    
+
         // Close menu on resize
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 576) {
                 toggleMenu(false);
             }
         });
-    
+
         // Close menu when clicking nav links
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 576) {
                     toggleMenu(false);
                 }
             });
@@ -212,4 +213,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', handleMobileNav);
     handleMobileNav();
+    // ... existing code ...
 });
